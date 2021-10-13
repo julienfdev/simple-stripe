@@ -35,8 +35,6 @@ it also exposes `StripeError` as an export to ease Error handling
 import SimpleStripe, { StripeError } from "simple-stripe"
 ```
 
-You can find a full TS server example in [stripe-samples](https://github.com/stripe-samples/accept-a-payment/tree/main/custom-payment-flow/server/node-typescript).
-
 ## Configuration
 ### Initialize with config object
 
