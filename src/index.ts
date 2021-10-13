@@ -141,7 +141,7 @@ export default class SimpleStripe {
          * Go through a customer's payment cards, find duplicates and detach the older ones
          *
          * This is good to call before sending payment methods infos to a front-end to prevent duplicates
-        */
+         */
         flushDuplicatePaymentMethods: async (id: customer_id): Promise<number> => {
             const methods = await this.#getCards(id);
             // okay this is a little tricky
