@@ -149,10 +149,10 @@ export default class SimpleStripe {
                 if (!index && methods.length > 1) {
                     // If this is the first item, we compare it with the following one
                     // Method has made the cut if its fingerprint is the same than the following and is older
-                    return (method.card!.fingerprint == methods[index + 1].card!.fingerprint) && (method.created < methods[index + 1].created)
+                    return (method.card!.fingerprint === methods[index + 1].card!.fingerprint) && (method.created < methods[index + 1].created)
                 } else {
                     // Else we compare it with the previous one
-                    return (method.card!.fingerprint == methods[index - 1].card!.fingerprint) && (method.created < methods[index - 1].created)
+                    return (method.card!.fingerprint === methods[index - 1].card!.fingerprint) && (method.created < methods[index - 1].created)
                 }
             })
             // we detach each method flagged by the algorithm from the customer
@@ -185,7 +185,7 @@ export default class SimpleStripe {
                     statusText: paymentIntent.status
                 }
             } catch (error: any) {
-                if (error.type && error.type == "StripeCardError") {
+                if (error.type && error.type === "StripeCardError") {
                     // typecasting
                     const err = error as Stripe.StripeCardError
                     return {
