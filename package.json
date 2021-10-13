@@ -1,13 +1,13 @@
 {
   "name": "simple-stripe",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A simple Stripe interface module, providing basic charging functionality and customer management",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
     "prepublishOnly": "npm run lint",
