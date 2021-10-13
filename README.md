@@ -121,3 +121,5 @@ charge: async (
 
 ### Types
 This module is written 100% in TypeScript, you can find the types in the src folder on the GitHub repository
+
+[api-keys]: https://dashboard.stripe.com/account/apikeys
