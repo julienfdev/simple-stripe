@@ -116,8 +116,43 @@ charge: async (
     currency = 'eur',): Promise<SimplePaymentIntent | void>
 // This method can charge an off_session saved payment id, and returns the result in form of a SimplePaymentIntent object
 ```
-
 ### Types
 This module is written 100% in TypeScript, you can find the types in the src folder on the GitHub repository
+
+## Roadmap
+
+This module is a work in progress.
+
+  First major milestome will be to wrap everything in structured classes, e.g :
+
+```ts
+class Customer{
+  public id: string
+  public name: string
+  public created: Date
+  public ...
+  ...
+  public paymentCards: PaymentCard[] // inherits from PaymentMethod etc..
+  public paymentIntents: PaymentIntent[]
+
+  constructor(id: string, options: tbd){
+    // fetch the customer, its payment methods and intents etc...
+  }
+
+  // Static methods to create or retreive a Customer?
+
+  // methods to charge the customer, retreive information ...
+}
+```
+  Following work will focus on supporting more scenarios :
+  - Subscriptions
+  - Card holds and captures
+  - Support for SEPA transferts
+  - Support for Apple Pay transactions (nothing much to do backend)
+
+Let's keep it simple though, I don't plan on supporting everything Stripe does
+## Collaboration
+
+If you want to collaborate to the project, you can fork it, create a wip/nameofyourfeature branch and pull request on the develop branch
 
 [api-keys]: https://dashboard.stripe.com/account/apikeys
