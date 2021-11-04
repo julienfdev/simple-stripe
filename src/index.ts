@@ -33,16 +33,21 @@ export default class SimpleStripe {
      * @returns a SimplePaymentIntent
      *
      */
-    generate: async (amount: number, customer?: string, currency = 'eur'): Promise<SimplePaymentIntent> => {
+    generate: async (amount: number, customer?: string, setupOffSession = false, currency = 'eur'): Promise<SimplePaymentIntent> => {
+      const additionnalOptions = {
+        ...setupOffSession && customer ? { setup_future_usage: "off_session" as Stripe.PaymentIntentCreateParams.SetupFutureUsage } : {}
+      }
       const paymentIntent = await this.stripe.paymentIntents.create({
         amount,
         currency,
         customer,
+        ...additionnalOptions
       });
       return {
         id: paymentIntent.id,
         status: this.#parsePaymentIntentStatus(paymentIntent.status),
         statusText: paymentIntent.status,
+        setupOffSession: setupOffSession && !!customer
       };
     },
     /**
@@ -115,6 +120,21 @@ export default class SimpleStripe {
     create: async (infos?: Stripe.CustomerCreateParams): Promise<SimpleCustomer> => {
       const customer = await this.stripe.customers.create(infos);
       return { id: customer.id };
+    },
+    /**
+     * Finds a list of customers based on email
+     * @param email 
+     * @returns an array containing the id's matching the email address
+     */
+    findIdByEmail: async (email: string): Promise<string[]> => {
+      const buffer: string[] = []
+      const customers = await this.stripe.customers.list({
+        email
+      })
+      customers.data.forEach(customer => {
+        buffer.push(customer.id)
+      })
+      return buffer
     },
     /**
      * Get a customer's details

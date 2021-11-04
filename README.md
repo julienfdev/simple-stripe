@@ -63,7 +63,7 @@ const simpleStripe = new SimpleStripe('sk_test_...', {
 Exposes several methods used to handle paymentIntents
 
 ```ts
-generate: async (amount: number, customer?: string, currency = 'eur'): Promise<SimplePaymentIntent>
+generate: async (amount: number, customer?: string, setupOffSession = false, currency = 'eur'): Promise<SimplePaymentIntent>
 // creates a new paymentIntent on your Stripe Dashboard and returns it as a `SimplePaymentIntent` object
 ```
 ```ts
@@ -93,6 +93,10 @@ Exposes several methods used to handle customers
 create: async (infos?: Stripe.CustomerCreateParams): Promise<SimpleCustomer>
 // Creates a customer on your Stripe Dashboard and returns its id
 // optional param "infos" are a Stripe.CustomerCreateParams object
+```
+```ts
+findByEmail: async (infos?: Stripe.CustomerCreateParams): Promise<SimpleCustomer>
+// Finds a list of customers based on email
 ```
 ```ts
 getDetails: async (id: customer_id): Promise<CustomerDetails>

@@ -8,6 +8,7 @@ export interface SimplePaymentIntent {
   id: string;
   status: PaymentIntentStatus;
   statusText: string;
+  setupOffSession?: boolean
 }
 export interface PaymentIntentDetails extends SimplePaymentIntent {
   client_secret?: string | null;
