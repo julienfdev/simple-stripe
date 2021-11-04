@@ -1,6 +1,6 @@
 {
   "name": "simple-stripe",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "A simple Stripe interface module, providing basic charging functionality and customer management",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
